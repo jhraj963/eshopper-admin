@@ -4,7 +4,9 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Icons from './pages/Icons';
+import Addproduct from './pages/Addproduct';
 import Protected from './components/protected';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -23,9 +25,16 @@ function App() {
             <Dashboard />
           </Protected>
         } />
+        
         <Route path={"/Icons"} element={
           <Protected isSignedIn={isSignedIn} >
             <Icons />
+          </Protected>
+        } />
+
+        <Route path={"/Addproduct"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Addproduct />
           </Protected>
         } />
 

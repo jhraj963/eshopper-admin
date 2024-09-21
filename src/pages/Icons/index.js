@@ -16,7 +16,6 @@ function Icons() {
             <div className="row">
 				 
               <div className="col-lg-12 grid-margin">
-                <div >
 					
                   <div className="card-body">
 						<div className="page-header">
@@ -4987,7 +4986,6 @@ function Icons() {
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>
