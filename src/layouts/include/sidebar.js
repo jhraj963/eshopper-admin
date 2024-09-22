@@ -50,6 +50,7 @@ function Sidebar() {
                 <i className="mdi mdi-home menu-icon"></i>
               </a>
             </li> */}
+         
           <li className="nav-item">
             <a className="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
               <span className="menu-title">Products</span>
@@ -78,7 +79,11 @@ function Sidebar() {
             </a>
             <div className="collapse" id="orders">
               <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">All Orders</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Allorders") ? 'active' : ''}`}>
+                  <Link to="/Allorders" className="sidebar-link nav-link">
+                    <span className="menu-title">All Orders</span>
+                  </Link>
+                </li>
                 <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Order Status</a></li>
                 <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Returns</a></li>
               </ul>

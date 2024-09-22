@@ -11,7 +11,7 @@ import Footer from './include/footer';
 function AdminLayout({ children }) {
   return (
     <div id="app">
-      {/* <div className="container-scroller"> */}
+      <div className="container-scroller">
         <Header />
         <div className="container-fluid page-body-wrapper"> 
           <Sidebar />
@@ -20,7 +20,7 @@ function AdminLayout({ children }) {
             <Footer />
           </div>
          </div>
-      {/* </div>  */}
+      </div> 
     </div>
   )
 }

@@ -28,8 +28,8 @@ function Icons() {
 							</nav>
            		 		</div>
                     <div className="row icons-list">
-                      <div className="col-sm-6 col-md-4 col-lg-3">
-                        <i className="mdi mdi-access-point"></i> mdi mdi-access-point
+                      <div className="col-sm-6 col-md-4 col-lg-12">
+                      <i className="mdi mdi-access-point"></i> mdi mdi-access-point mdi mdi-access-pointmdi mdi-access-pointmdi mdi-access-pointmdi mdi-access-pointmdi mdi-access-pointmdi mdi-access-point
                       </div>
                       <div className="col-sm-6 col-md-4 col-lg-3">
                         <i className="mdi mdi-access-point-network"></i> mdi mdi-access-point-network

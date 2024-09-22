@@ -189,8 +189,8 @@ function Header() {
                             </button>
                         </div>
                     </nav>
-                   <div className="row p-0 m-0 proBanner" id="proBanner">
-                    <div className="col-md-12 p-0 m-0">
+                    <div className="row p-0 m-0 proBanner" id="proBanner d-none">
+                        <div className="col-md-12 p-0 m-0 ">
                         <div className="card-body card-body-padding d-flex align-items-center justify-content-between">
                             <div className="d-flex align-items-center justify-content-between">
                                 {/* <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i className="mdi mdi-home me-3 text-white"></i></a> */}
