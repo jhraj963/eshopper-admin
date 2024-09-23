@@ -65,7 +65,11 @@ function Sidebar() {
                       <span className="menu-title">Add Product</span>
                   </Link>
                 </li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Categories</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Categories") ? 'active' : ''}`}>
+                  <Link to="/Categories" className="sidebar-link nav-link">
+                      <span className="menu-title">Categories</span>
+                  </Link>
+                </li>
                 <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Inventory</a></li>
               </ul>
             </div>
