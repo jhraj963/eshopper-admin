@@ -15,8 +15,8 @@ function AdminLayout({ children }) {
         <Header />
         <div className="container-fluid page-body-wrapper"> 
           <Sidebar />
-          <div id="main">
-            <main>{children}</main>
+          <div id="main" className='main-panel'>
+            {children}
             <Footer />
           </div>
          </div>
