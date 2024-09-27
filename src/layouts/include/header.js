@@ -60,13 +60,19 @@ function Header() {
                             <a className="dropdown-item" href="#">
                                 <i className="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
                             <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">
-                                <i className="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+                            {/* <a className="dropdown-item" href="#">
+                                <i className="mdi mdi-logout me-2 text-primary"></i> Signout </a> */}
+
+                            <a onClick={activeMenu} className={`dropdown-item sidebar-item ${isLinkActive("/Login")}`}>
+                                <Link to="/Login" className="sidebar-link" onClick={handelLogout}>
+                                    <i className="mdi mdi-logout me-2 text-primary"></i>
+                                    Signout
+                                </Link>
+                            </a>
 
                             {/* <a onClick={activeMenu} className={`sidebar-item ${isLinkActive("/Login")}`}>
             <Link to="/Login" className="sidebar-link" onClick={handelLogout}>
         <i className="mdi mdi-logout me-2 text-primary"></i>Signout</Link>  </a> */}
-
 
                         </div>
                     </li>
