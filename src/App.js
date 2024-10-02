@@ -9,6 +9,8 @@ import Addproduct from './pages/Addproduct';
 import Allorders from './pages/Allorders';
 import Categories from './pages/Categories';
 import CategoriesAdd from './pages/Categories/CategoriesAdd';
+import Discount from './pages/Discount';
+import DiscountAdd from './pages/Discount/DiscountAdd';
 import Protected from './components/protected';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -69,6 +71,24 @@ function App() {
         <Route path={"/Categories/edit/:id"} element={
           <Protected isSignedIn={isSignedIn} >
             <CategoriesAdd />
+          </Protected>
+        } />
+
+        <Route path={"/discount"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Discount />
+          </Protected>
+        } />
+
+        <Route path={"/discount/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <DiscountAdd />
+          </Protected>
+        } />
+
+        <Route path={"/discount/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <DiscountAdd />
           </Protected>
         } />
 

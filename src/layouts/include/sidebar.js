@@ -116,8 +116,13 @@ function Sidebar() {
               </a>
             <div className="collapse" id="Promotions">
                 <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Discount Codes
-                </a></li>
+                {/* <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Discount Codes
+                </a></li> */}
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/discount") ? 'active' : ''}`}>
+                  <Link to="/discount" className="sidebar-link nav-link">
+                      <span className="menu-title">Discount Codes</span>
+                  </Link>
+                </li>
                 <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Sales Events</a></li>
                 </ul>
               </div>
