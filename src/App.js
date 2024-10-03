@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Icons from './pages/Icons';
 import Addproduct from './pages/Addproduct';
-// import Addproduct from './pages/Addproduct/ProductAdd';
+import ProductAdd from './pages/Addproduct/ProductAdd';
 import Allorders from './pages/Allorders';
 import Categories from './pages/Categories';
 import CategoriesAdd from './pages/Categories/CategoriesAdd';
@@ -38,15 +38,26 @@ function App() {
           </Protected>
         } />
 
-        <Route path={"/Addproduct"} element={
+        <Route path={"/addproduct"} element={
           <Protected isSignedIn={isSignedIn} >
             <Addproduct />
           </Protected>
         } />
 
+        <Route path={"/addproduct/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <ProductAdd />
+          </Protected>
+        } />
+
+        <Route path={"/addproduct/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <ProductAdd />
+          </Protected>
+        } />
         {/* <Route path={"/Addproduct/ProductAdd"} element={
           <Protected isSignedIn={isSignedIn} >
-            <Addproduct />
+            <ProductAdd />
           </Protected>
         } /> */}
 

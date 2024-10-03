@@ -10,12 +10,12 @@ function Addproduct() {
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/addproduct/index`).then(function (response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/addproduct`).then(function (response) {
             setData(response.data.data);
         });
     }
     const deleteData = (id) => {
-        axios.delete(`${process.env.REACT_APP_API_URL}/addproduct/{id}`).then(function (response) {
+        axios.delete(`${process.env.REACT_APP_API_URL}/addproduct/${id}`).then(function (response) {
             getDatas();
         });
     }
@@ -55,7 +55,7 @@ function Addproduct() {
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Category</th>
-                                                <th>Photo</th>
+                                                {/* <th>Photo</th> */}
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -67,9 +67,9 @@ function Addproduct() {
                                                     <td>{d.price}</td>
                                                     <td>{d.quantity}</td>
                                                     <td>{d.category}</td>
-                                                    <td>{d.photo}</td>
+                                                    {/* <td>{d.photo}</td> */}
                                                     <td>
-                                                        <Link to={`/doctor/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <Link to={`/Addproduct/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                                     </td>
                                                 </tr>
