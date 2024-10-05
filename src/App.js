@@ -41,6 +41,14 @@ import Paymentprocessing from './pages/Paymentprocessing';
 import Fulfillmentoverview from './pages/Fulfillmentoverview';
 import Supporttickets from './pages/Supporttickets';
 import Livechat from './pages/Livechat';
+import Metatags from './pages/Metatags';
+import URLmanagement from './pages/URLmanagement';
+import Googleanalytics from './pages/Googleanalytics';
+import Performancemetrics from './pages/Performancemetrics';
+import Createbackup from './pages/Createbackup';
+import Restorebackup from './pages/Restorebackup';
+import Userguides from './pages/Userguides';
+import Helpcenter from './pages/Helpcenter';
 import Protected from './components/protected';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -310,6 +318,54 @@ function App() {
         <Route path={"/Livechat"} element={
           <Protected isSignedIn={isSignedIn} >
             <Livechat />
+          </Protected>
+        } />
+
+        <Route path={"/Metatags"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Metatags />
+          </Protected>
+        } />
+
+        <Route path={"/URLmanagement"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <URLmanagement />
+          </Protected>
+        } />
+
+        <Route path={"/Googleanalytics"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Googleanalytics />
+          </Protected>
+        } />
+
+        <Route path={"/Performancemetrics"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Performancemetrics />
+          </Protected>
+        } />
+
+        <Route path={"/Createbackup"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Createbackup />
+          </Protected>
+        } />
+
+        <Route path={"/Restorebackup"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Restorebackup />
+          </Protected>
+        } />
+
+        <Route path={"/Userguides"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Userguides />
+          </Protected>
+        } />
+
+        <Route path={"/Helpcenter"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Helpcenter />
           </Protected>
         } />
         {/* <Route path="/" element={<Dashboard />} /> */}
