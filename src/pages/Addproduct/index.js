@@ -47,7 +47,7 @@ function Addproduct() {
                             </div>
                             <div className="card-content">
                                 <div className="table-responsive">
-                                    <table className="table table-bordered mb-0">
+                                    <table className="table table-bordered mb-0 text-center">
                                         <thead>
                                             <tr>
                                                 <th>Product Name</th>

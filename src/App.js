@@ -26,6 +26,21 @@ import Taxsettings from './pages/Taxsettings';
 import Pages from './pages/Pages';
 import Blog from './pages/Blog';
 import FAQs from './pages/FAQs';
+import Paymentgateways from './pages/Paymentgateways';
+import Shippingproviders from './pages/Shippingproviders';
+import Apps from './pages/Apps';
+import Notifications from './pages/Notifications';
+import Adduser from './pages/Adduser';
+import Permissions from './pages/Permissions';
+import Activitylog from './pages/Activitylog';
+import Bulkupload from './pages/Bulkupload';
+import Stockadjustments from './pages/Stockadjustments';
+import Inventoryoverview from './pages/Inventoryoverview';
+import Shippingmanagement from './pages/Shippingmanagement';
+import Paymentprocessing from './pages/Paymentprocessing';
+import Fulfillmentoverview from './pages/Fulfillmentoverview';
+import Supporttickets from './pages/Supporttickets';
+import Livechat from './pages/Livechat';
 import Protected from './components/protected';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -205,6 +220,96 @@ function App() {
         <Route path={"/FAQs"} element={
           <Protected isSignedIn={isSignedIn} >
             <FAQs />
+          </Protected>
+        } />
+
+        <Route path={"/Paymentgateways"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Paymentgateways />
+          </Protected>
+        } />
+
+        <Route path={"/Shippingproviders"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Shippingproviders />
+          </Protected>
+        } />
+
+        <Route path={"/Apps"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Apps />
+          </Protected>
+        } />
+
+        <Route path={"/Notifications"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Notifications />
+          </Protected>
+        } />
+
+        <Route path={"/Adduser"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Adduser />
+          </Protected>
+        } />
+
+        <Route path={"/Permissions"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Permissions />
+          </Protected>
+        } />
+
+        <Route path={"/Activitylog"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Activitylog />
+          </Protected>
+        } />
+
+        <Route path={"/Bulkupload"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Bulkupload />
+          </Protected>
+        } />
+
+        <Route path={"/Stockadjustments"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Stockadjustments />
+          </Protected>
+        } />
+
+        <Route path={"/Inventoryoverview"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Inventoryoverview />
+          </Protected>
+        } />
+
+        <Route path={"/Shippingmanagement"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Shippingmanagement />
+          </Protected>
+        } />
+
+        <Route path={"/Paymentprocessing"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Paymentprocessing />
+          </Protected>
+        } />
+
+        <Route path={"/Fulfillmentoverview"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Fulfillmentoverview />
+          </Protected>
+        } />
+
+        <Route path={"/Supporttickets"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Supporttickets />
+          </Protected>
+        } />
+
+        <Route path={"/Livechat"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <Livechat />
           </Protected>
         } />
         {/* <Route path="/" element={<Dashboard />} /> */}

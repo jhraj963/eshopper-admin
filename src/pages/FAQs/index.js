@@ -37,8 +37,8 @@ function FAQs() {
                                                     <td>What is the return policy?</td>
                                                     <td>Our return policy lasts 30 days...</td>
                                                     <td>
-                                                        <button class="btn btn-success">Edit</button>
-                                                        <button class="btn btn-danger">Delete</button>
+                                                        <button className="btn btn-success">Edit</button>
+                                                        <button className="btn btn-danger">Delete</button>
                                                     </td>
                                                 </tr>
                                                 {/* More FAQ rows will go here */}
@@ -49,8 +49,8 @@ function FAQs() {
                                                     <td>What is the return policy?</td>
                                                     <td>Our return policy lasts 30 days...</td>
                                                     <td>
-                                                        <button class="btn btn-success">Edit</button>
-                                                        <button class="btn btn-danger">Delete</button>
+                                                        <button className="btn btn-success">Edit</button>
+                                                        <button className="btn btn-danger">Delete</button>
                                                     </td>
                                                 </tr>
                                                 {/* More FAQ rows will go here */}
@@ -61,8 +61,8 @@ function FAQs() {
                                                     <td>What is the return policy?</td>
                                                     <td>Our return policy lasts 30 days...</td>
                                                     <td>
-                                                        <button class="btn btn-success">Edit</button>
-                                                        <button class="btn btn-danger">Delete</button>
+                                                        <button className="btn btn-success">Edit</button>
+                                                        <button className="btn btn-danger">Delete</button>
                                                     </td>
                                                 </tr>
                                                 {/* More FAQ rows will go here */}
@@ -76,7 +76,7 @@ function FAQs() {
                                             <label forhtml="faq-answer">Answer:</label>
                                             <textarea id="faq-answer" required></textarea>
 
-                                            <button type="submit" class="btn btn-warning">Add FAQ</button>
+                                            <button type="submit" className="btn btn-warning">Add FAQ</button>
                                         </form>
                                 </div>
                             </div>

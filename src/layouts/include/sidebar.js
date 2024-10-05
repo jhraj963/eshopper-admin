@@ -241,16 +241,27 @@ function Sidebar() {
               </a>
             <div className="collapse" id="Integrations">
                 <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Payment Gateways
-                </a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Shipping Providers</a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Apps</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Paymentgateways") ? 'active' : ''}`}>
+                  <Link to="/Paymentgateways" className="sidebar-link nav-link">
+                    <span className="menu-title">Payment Gateways</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Shippingproviders") ? 'active' : ''}`}>
+                  <Link to="/Shippingproviders" className="sidebar-link nav-link">
+                    <span className="menu-title">Shipping Providers</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Apps") ? 'active' : ''}`}>
+                  <Link to="/Apps" className="sidebar-link nav-link">
+                    <span className="menu-title">Apps</span>
+                  </Link>
+                </li>
                 </ul>
               </div>
             </li>
           
-          <li onClick={activeMenu} className={`nav-item ${isLinkActive("/#") ? 'active' : ''}`}>
-            <Link to="/#" className="sidebar-link nav-link">
+          <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Notifications") ? 'active' : ''}`}>
+            <Link to="/Notifications" className="sidebar-link nav-link">
               <span className="menu-title">Notifications</span>
               <i data-feather="home" width="20" className="mdi mdi-alarm-light menu-icon"></i>
 
@@ -277,10 +288,21 @@ function Sidebar() {
             </a>
             <div className="collapse" id="Management">
               <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Add User
-                </a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Permissions</a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Activity Log</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Adduser") ? 'active' : ''}`}>
+                  <Link to="/Adduser" className="sidebar-link nav-link">
+                    <span className="menu-title">Add User</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Permissions") ? 'active' : ''}`}>
+                  <Link to="/Permissions" className="sidebar-link nav-link">
+                    <span className="menu-title">Permissions</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Activitylog") ? 'active' : ''}`}>
+                  <Link to="/Activitylog" className="sidebar-link nav-link">
+                    <span className="menu-title">Activity Log</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </li>
@@ -293,9 +315,21 @@ function Sidebar() {
             </a>
             <div className="collapse" id="Inventory">
               <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Bulk Upload
-                </a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Stock Adjustments</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Bulkupload") ? 'active' : ''}`}>
+                  <Link to="/Bulkupload" className="sidebar-link nav-link">
+                    <span className="menu-title">Bulk Upload</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Stockadjustments") ? 'active' : ''}`}>
+                  <Link to="/Stockadjustments" className="sidebar-link nav-link">
+                    <span className="menu-title">Stock Adjustments</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Inventoryoverview") ? 'active' : ''}`}>
+                  <Link to="/Inventoryoverview" className="sidebar-link nav-link">
+                    <span className="menu-title">Inventory Overview</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </li>
@@ -308,9 +342,21 @@ function Sidebar() {
             </a>
             <div className="collapse" id="Fulfillment">
               <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Shipping Management
-                </a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Payment Processing</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Shippingmanagement") ? 'active' : ''}`}>
+                  <Link to="/Shippingmanagement" className="sidebar-link nav-link">
+                    <span className="menu-title">Shipping Management</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Paymentprocessing") ? 'active' : ''}`}>
+                  <Link to="/Paymentprocessing" className="sidebar-link nav-link">
+                    <span className="menu-title">Payment Processing</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Fulfillmentoverview") ? 'active' : ''}`}>
+                  <Link to="/Fulfillmentoverview" className="sidebar-link nav-link">
+                    <span className="menu-title">Fulfillment Overview</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </li>
@@ -323,9 +369,16 @@ function Sidebar() {
             </a>
             <div className="collapse" id="Support">
               <ul className="nav flex-column sub-menu">
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/buttons.html">Support Tickets
-                </a></li>
-                <li className="nav-item"> <a className="nav-link" href="pages/ui-features/typography.html">Live Chat</a></li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Supporttickets") ? 'active' : ''}`}>
+                  <Link to="/Supporttickets" className="sidebar-link nav-link">
+                    <span className="menu-title">Support Tickets</span>
+                  </Link>
+                </li>
+                <li onClick={activeMenu} className={`nav-item ${isLinkActive("/Livechat") ? 'active' : ''}`}>
+                  <Link to="/Livechat" className="sidebar-link nav-link">
+                    <span className="menu-title">Live Chat</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </li>
