@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Salesevents() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/salesevent`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/salesevent/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -16,7 +31,9 @@ function Salesevents() {
                         <p>Manage and create sales events to attract customers.</p>
                     </div>
                 </div>
-
+                <div className="card-header">
+                                <Link to={'/salesevents/add'} className='btn btn-primary float-left' >Add New</Link>
+                            </div>
                 <div className="row" id="table-bordered">
                     <div className="col-12">
                         <div className="card">
@@ -34,47 +51,21 @@ function Salesevents() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                          {/* Sample Sales Event Row  */}
-                                            <tr>
-                                                <td>Black Friday Sale</td>
-                                                <td>2023-11-24</td>
-                                                <td>2023-11-30</td>
-                                                <td>30%</td>
-                                                <td>
-                                                    <button class="btn btn-warning">Edit</button>
-                                                    <button class="btn btn-info">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More sales events will go here */}
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                   
+                                                    <td>{d.eventname}</td>
+                                                    <td>{d.startdate}</td>
+                                                    <td>{d.enddate}</td>
+                                                    <td>{d.discount}</td>
+                                                    <td>
+                                                        <Link to={`/salesevents/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                                    </td>
+                                                </tr>
+                                            )}
                                         </tbody>
-                                        <tbody>
-                                          {/* Sample Sales Event Row  */}
-                                            <tr>
-                                                <td>Black Friday Sale</td>
-                                                <td>2023-11-24</td>
-                                                <td>2023-11-30</td>
-                                                <td>30%</td>
-                                                <td>
-                                                    <button class="btn btn-warning">Edit</button>
-                                                    <button class="btn btn-info">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More sales events will go here */}
-                                        </tbody>
-                                        <tbody>
-                                          {/* Sample Sales Event Row  */}
-                                            <tr>
-                                                <td>Black Friday Sale</td>
-                                                <td>2023-11-24</td>
-                                                <td>2023-11-30</td>
-                                                <td>30%</td>
-                                                <td>
-                                                    <button class="btn btn-warning">Edit</button>
-                                                    <button class="btn btn-info">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More sales events will go here */}
-                                        </tbody>
+
                                     </table>
                                     <form>
                                         <h4>Add New Sales Event</h4>
