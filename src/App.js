@@ -26,6 +26,7 @@ import Usermanagement from './pages/Usermanagement';
 import Taxsettings from './pages/Taxsettings';
 import Pages from './pages/Pages';
 import Blog from './pages/Blog';
+import BlogAdd from './pages/Blog/BlogAdd';
 import FAQs from './pages/FAQs';
 import Paymentgateways from './pages/Paymentgateways';
 import Shippingproviders from './pages/Shippingproviders';
@@ -235,6 +236,18 @@ function App() {
         <Route path={"/Blog"} element={
           <Protected isSignedIn={isSignedIn} >
             <Blog />
+          </Protected>
+        } />
+
+         <Route path={"/blog/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <BlogAdd />
+          </Protected>
+        } />
+
+        <Route path={"/blog/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <BlogAdd />
           </Protected>
         } />
 

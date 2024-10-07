@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Blog() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/blog/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/blog/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -23,68 +38,30 @@ function Blog() {
                             
                             <div className="card-content">
                                 <div className="table-responsive">
-                                        <table className="table table-bordered mb-0 text-center">
+                                    <Link to={'/blog/add'} className='btn btn-primary float-right' >Add New</Link>
+                                        <table className="table table-bordered mb-0 text-center table-info">
                                             <thead>
                                                 <tr>
-                                                    <th>Post Title</th>
-                                                    <th>Author</th>
-                                                    <th>Date</th>
-                                                    <th>Actions</th>
+                                                    <th><h5>Post Title</h5></th>
+                                                    <th><h5>Author</h5></th>
+                                                    <th><h5>Date</h5></th>
+                                                    <th><h5>Actions</h5></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                {/* Sample Blog Post Row */}
-                                                <tr>
-                                                    <td>10 Tips for Online Shopping</td>
-                                                    <td>Jane Doe</td>
-                                                    <td>2023-09-15</td>
+                                           <tbody>
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                    <td>{d.title}</td>
+                                                    <td>{d.author}</td>
+                                                    <td>{d.date}</td>
                                                     <td>
-                                                        <button class="btn btn-info">Edit</button>
-                                                        <button class="btn btn-dark">Delete</button>
+                                                        <Link to={`/blog/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                                     </td>
                                                 </tr>
-                                               {/* More blog post rows will go here */}
-                                            </tbody>
-                                            <tbody>
-                                                {/* Sample Blog Post Row */}
-                                                <tr>
-                                                    <td>10 Tips for Online Shopping</td>
-                                                    <td>Jane Doe</td>
-                                                    <td>2023-09-15</td>
-                                                    <td>
-                                                        <button class="btn btn-info">Edit</button>
-                                                        <button class="btn btn-dark">Delete</button>
-                                                    </td>
-                                                </tr>
-                                               {/* More blog post rows will go here */}
-                                            </tbody>
-                                            <tbody>
-                                                {/* Sample Blog Post Row */}
-                                                <tr>
-                                                    <td>10 Tips for Online Shopping</td>
-                                                    <td>Jane Doe</td>
-                                                    <td>2023-09-15</td>
-                                                    <td>
-                                                        <button class="btn btn-info">Edit</button>
-                                                        <button class="btn btn-dark">Delete</button>
-                                                    </td>
-                                                </tr>
-                                               {/* More blog post rows will go here */}
-                                            </tbody>
+                                            )}
+                                        </tbody>
                                         </table>
-                                        <form>
-                                            <h4>Add New Blog Post</h4>
-                                            <label forhtml="blog-title">Post Title:</label>
-                                            <input type="text" id="blog-title" required />
-
-                                            <label forhtml="blog-author">Author:</label>
-                                            <input type="text" id="blog-author" required />
-
-                                            <label forhtml="blog-date">Date:</label>
-                                            <input type="date" id="blog-date" required />
-
-                                            <button type="submit" class="btn btn-primary">Create Blog Post</button>
-                                        </form>
                                 </div>
                             </div>
                         </div>
