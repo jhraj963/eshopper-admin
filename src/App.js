@@ -14,7 +14,7 @@ import CategoriesAdd from './pages/Categories/CategoriesAdd';
 import Discount from './pages/Discount';
 import DiscountAdd from './pages/Discount/DiscountAdd';
 import Salesevents from './pages/Salesevents';
-// import EventAdd from './pages/Salesevents/EventAdd';
+import EventAdd from './pages/Salesevents/EventAdd';
 import Inventory from './pages/Inventory';
 import Allcustomers from './pages/Allcustomers';
 import Customergroups from './pages/Customergroups';
@@ -60,7 +60,7 @@ function App() {
 
   return (
 
-      <BrowserRouter>
+    <BrowserRouter>
       <Routes>
 
         <Route path="/login" element={<Login />} />
@@ -70,7 +70,7 @@ function App() {
             <Dashboard />
           </Protected>
         } />
-        
+
         <Route path={"/Icons"} element={
           <Protected isSignedIn={isSignedIn} >
             <Icons />
@@ -160,7 +160,7 @@ function App() {
           </Protected>
         } />
 
-        {/* <Route path={"/salesevents/add"} element={
+        <Route path={"/salesevents/add"} element={
           <Protected isSignedIn={isSignedIn} >
             <EventAdd />
           </Protected>
@@ -170,7 +170,7 @@ function App() {
           <Protected isSignedIn={isSignedIn} >
             <EventAdd />
           </Protected>
-        } /> */}
+        } />
 
         <Route path={"/Inventory"} element={
           <Protected isSignedIn={isSignedIn} >
@@ -387,12 +387,12 @@ function App() {
 
 
 
-        
+
 
 
       </Routes>
-      </BrowserRouter>
-     
+    </BrowserRouter>
+
   );
 }
 
