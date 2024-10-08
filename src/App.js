@@ -17,6 +17,7 @@ import Salesevents from './pages/Salesevents';
 import EventAdd from './pages/Salesevents/EventAdd';
 import Inventory from './pages/Inventory';
 import Allcustomers from './pages/Allcustomers';
+import CustomerAdd from './pages/Allcustomers/CustomerAdd';
 import Customergroups from './pages/Customergroups';
 import Salesreports from './pages/Salesreports';
 import Inventoryreports from './pages/Inventoryreports';
@@ -182,6 +183,18 @@ function App() {
         <Route path={"/Allcustomers"} element={
           <Protected isSignedIn={isSignedIn} >
             <Allcustomers />
+          </Protected>
+        } />
+
+        <Route path={"/allcustomer/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <CustomerAdd />
+          </Protected>
+        } />
+
+        <Route path={"/allcustomer/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <CustomerAdd />
           </Protected>
         } />
 

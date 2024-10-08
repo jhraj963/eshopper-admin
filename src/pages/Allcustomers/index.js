@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Allcustomers() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/allcustomer/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/allcustomer/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -23,45 +38,31 @@ function Allcustomers() {
                             
                             <div className="card-content">
                                 <div className="table-responsive">
-                                    <table className="table table-bordered mb-0 text-center">
+                                    <Link to={'/allcustomer/add'} className='btn btn-success float-end' >Add New</Link>
+                                    <table className="table table-bordered mb-0 text-center table-info">
                                         <thead class="table-danger">
                                             <tr>
-                                                <th>Customer Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Registration Date</th>
-                                                <th>Actions</th>
+                                                <th><h5>Customer Name</h5></th>
+                                                <th><h5>Email</h5></th>
+                                                <th><h5>Phone</h5></th>
+                                                <th><h5>Registration Date</h5></th>
+                                                <th><h5>Actions</h5></th>
                                             </tr>
                                         </thead>
-                                        <tbody class="table-info">
-                                                <td>John Doe</td>
-                                                <td>john@example.com</td>
-                                                <td>(123) 456-7890</td>
-                                                <td>2023-01-01</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit</button>
-                                                    <button className='btn btn-danger text-dark' >Delete</button>
-                                                </td> 
-                                        </tbody>
-                                        <tbody class="table-info">
-                                                <td>John Doe</td>
-                                                <td>john@example.com</td>
-                                                <td>(123) 456-7890</td>
-                                                <td>2023-01-01</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit</button>
-                                                    <button className='btn btn-danger text-dark' >Delete</button>
-                                                </td> 
-                                        </tbody>
-                                        <tbody class="table-info">
-                                                <td>John Doe</td>
-                                                <td>john@example.com</td>
-                                                <td>(123) 456-7890</td>
-                                                <td>2023-01-01</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit</button>
-                                                    <button className='btn btn-danger text-dark' >Delete</button>
-                                                </td> 
+                                        
+                                        <tbody>
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                    <td>{d.name}</td>
+                                                    <td>{d.email}</td>
+                                                    <td>{d.phone}</td>
+                                                    <td>{d.registration_date}</td>
+                                                    <td>
+                                                        <Link to={`/allcustomer/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                                    </td>
+                                                </tr>
+                                            )}
                                         </tbody>
                                         
                                     </table>

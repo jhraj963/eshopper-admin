@@ -38,7 +38,7 @@ function Blog() {
                             
                             <div className="card-content">
                                 <div className="table-responsive">
-                                    <Link to={'/blog/add'} className='btn btn-primary float-end' >Add New</Link>
+                                    <Link to={'/blog/add'} className='btn btn-success float-end' >Add New</Link>
                                         <table className="table table-bordered mb-0 text-center table-info">
                                             <thead>
                                                 <tr>
