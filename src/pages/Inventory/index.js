@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Inventory() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/inventory/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/inventory/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -22,7 +37,8 @@ function Inventory() {
                         <div className="card">
                             
                             <div className="card-content">
-                                <div className="table-responsive">
+                                  <div className="table-responsive">
+                                      <Link to={'/inventory/add'} className='btn btn-success float-end' >Add New</Link>
                                     <table className="table table-bordered mb-0 text-center">
                                         <thead class="table-danger">
                                             <tr>
@@ -32,29 +48,18 @@ function Inventory() {
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="table-info">
-                                                <td>Sample Product</td>
-                                                <td>50</td>
-                                                <td>10</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit Stock</button>
-                                                </td> 
-                                        </tbody>
-                                        <tbody class="table-info">
-                                                <td>Sample Product</td>
-                                                <td>50</td>
-                                                <td>10</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit Stock</button>
-                                                </td> 
-                                        </tbody>
-                                        <tbody class="table-info">
-                                                <td>Sample Product</td>
-                                                <td>50</td>
-                                                <td>10</td>
-                                                <td>
-                                                    <button className='btn btn-info text-dark' >Edit Stock</button>
-                                                </td> 
+                                        <tbody>
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                    <td>{d.product_name}</td>
+                                                    <td>{d.current_stock}</td>
+                                                    <td>{d.reorder_level}</td>
+                                                    <td>
+                                                        <Link to={`/inventory/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                                    </td>
+                                                </tr>
+                                            )}
                                         </tbody>
                                     </table>
                                 </div>

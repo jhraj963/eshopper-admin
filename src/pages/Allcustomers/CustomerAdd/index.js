@@ -64,7 +64,7 @@ function CustomerAdd() {
                         </div>
                     </div>
                     <div className="card-header">
-                        <Link to={'/allcustomer'} className='btn btn-primary float-left' >Back to List</Link>
+                        <Link to={'/Allcustomers'} className='btn btn-primary float-left' >Back to List</Link>
                     </div>
                     <div className="row" id="table-bordered">
                         <div className="col-12">

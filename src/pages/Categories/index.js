@@ -25,16 +25,9 @@ function Categories() {
             <div className="page-title">
                 <div className="row">
                     <div className="col-12 col-md-6 order-md-1 order-last">
-                        <h3>Designation</h3>
+                          <h3> All Categories</h3>
                     </div>
-                    <div className="col-12 col-md-6 order-md-2 order-first">
-                        <nav aria-label="breadcrumb" className='breadcrumb-header'>
-                            <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li className="breadcrumb-item active" aria-current="page">List</li>
-                            </ol>
-                        </nav>
-                    </div>
+                  
                 </div>
             </div>
 
@@ -42,12 +35,11 @@ function Categories() {
             <div className="col-12">
                 <div className="card">
                 <div className="card-header">
-                    <h4 className="card-title">All Categories</h4>
-                    <Link to={'/Categories/add'} className='btn btn-primary float-right' >Add New</Link>
+                    <Link to={'/Categories/add'} className='btn btn-success float-end' >Add New</Link>
                 </div>
                 <div className="card-content">
                     <div className="table-responsive">
-                        <table className="table table-bordered mb-0">
+                                  <table className="table table-bordered mb-0 text-center table-info">
                             <thead>
                                 <tr>
                                     <th>Categories Name</th>

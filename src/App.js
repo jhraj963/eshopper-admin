@@ -16,6 +16,7 @@ import DiscountAdd from './pages/Discount/DiscountAdd';
 import Salesevents from './pages/Salesevents';
 import EventAdd from './pages/Salesevents/EventAdd';
 import Inventory from './pages/Inventory';
+import InventoryAdd from './pages/Inventory/InventoryAdd';
 import Allcustomers from './pages/Allcustomers';
 import CustomerAdd from './pages/Allcustomers/CustomerAdd';
 import Customergroups from './pages/Customergroups';
@@ -177,6 +178,18 @@ function App() {
         <Route path={"/Inventory"} element={
           <Protected isSignedIn={isSignedIn} >
             <Inventory />
+          </Protected>
+        } />
+
+        <Route path={"/inventory/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <InventoryAdd />
+          </Protected>
+        } />
+
+        <Route path={"/inventory/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <InventoryAdd />
           </Protected>
         } />
 
