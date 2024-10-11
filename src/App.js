@@ -7,6 +7,7 @@ import Icons from './pages/Icons';
 import Addproduct from './pages/Addproduct';
 import ProductAdd from './pages/Addproduct/ProductAdd';
 import Allorders from './pages/Allorders';
+import OrderAdd from './pages/Allorders/OrderAdd';
 import Orderstatus from './pages/Orderstatus';
 import Returns from './pages/Returns';
 import Categories from './pages/Categories';
@@ -27,9 +28,11 @@ import Storesettings from './pages/Storesettings';
 import Usermanagement from './pages/Usermanagement';
 import Taxsettings from './pages/Taxsettings';
 import Pages from './pages/Pages';
+import PageAdd from './pages/Pages/PageAdd';
 import Blog from './pages/Blog';
 import BlogAdd from './pages/Blog/BlogAdd';
 import FAQs from './pages/FAQs';
+import FaqsAdd from './pages/FAQs/FaqsAdd';
 import Paymentgateways from './pages/Paymentgateways';
 import Shippingproviders from './pages/Shippingproviders';
 import Apps from './pages/Apps';
@@ -106,6 +109,18 @@ function App() {
         <Route path={"/Allorders"} element={
           <Protected isSignedIn={isSignedIn} >
             <Allorders />
+          </Protected>
+        } />
+
+        <Route path={"/allorder/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <OrderAdd />
+          </Protected>
+        } />
+
+        <Route path={"/allorder/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <OrderAdd />
           </Protected>
         } />
 
@@ -253,12 +268,27 @@ function App() {
           </Protected>
         } />
 
+          {/* Page */}
+          
         <Route path={"/Pages"} element={
           <Protected isSignedIn={isSignedIn} >
             <Pages />
           </Protected>
         } />
 
+        <Route path={"/page/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <PageAdd />
+          </Protected>
+        } />
+
+        <Route path={"/page/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <PageAdd />
+          </Protected>
+        } />
+
+          {/* Blog */}
         <Route path={"/Blog"} element={
           <Protected isSignedIn={isSignedIn} >
             <Blog />
@@ -277,9 +307,23 @@ function App() {
           </Protected>
         } />
 
+          {/* FAQs */}
+
         <Route path={"/FAQs"} element={
           <Protected isSignedIn={isSignedIn} >
             <FAQs />
+          </Protected>
+        } />
+
+        <Route path={"/faq/add"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <FaqsAdd />
+          </Protected>
+        } />
+
+        <Route path={"/faq/edit/:id"} element={
+          <Protected isSignedIn={isSignedIn} >
+            <FaqsAdd />
           </Protected>
         } />
 

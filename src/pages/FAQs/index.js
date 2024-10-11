@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function FAQs() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/faq/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/faq/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -23,6 +38,7 @@ function FAQs() {
                             
                             <div className="card-content">
                                 <div className="table-responsive">
+                                    <Link to={'/faq/add'} className='btn btn-success float-end' >Add New FAQs</Link>
                                         <table className="table table-bordered mb-0 text-center">
                                             <thead>
                                                 <tr>
@@ -32,52 +48,18 @@ function FAQs() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {/* Sample FAQ Row */}
-                                                <tr>
-                                                    <td>What is the return policy?</td>
-                                                    <td>Our return policy lasts 30 days...</td>
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                    <td>{d.question}</td>
+                                                    <td>{d.answer}</td>
                                                     <td>
-                                                        <button className="btn btn-success">Edit</button>
-                                                        <button className="btn btn-danger">Delete</button>
+                                                        <Link to={`/faq/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                                     </td>
                                                 </tr>
-                                                {/* More FAQ rows will go here */}
-                                            </tbody>
-                                            <tbody>
-                                                {/* Sample FAQ Row */}
-                                                <tr>
-                                                    <td>What is the return policy?</td>
-                                                    <td>Our return policy lasts 30 days...</td>
-                                                    <td>
-                                                        <button className="btn btn-success">Edit</button>
-                                                        <button className="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                {/* More FAQ rows will go here */}
-                                            </tbody>
-                                            <tbody>
-                                                {/* Sample FAQ Row */}
-                                                <tr>
-                                                    <td>What is the return policy?</td>
-                                                    <td>Our return policy lasts 30 days...</td>
-                                                    <td>
-                                                        <button className="btn btn-success">Edit</button>
-                                                        <button className="btn btn-danger">Delete</button>
-                                                    </td>
-                                                </tr>
-                                                {/* More FAQ rows will go here */}
-                                            </tbody>
+                                            )}
+                                        </tbody>
                                         </table>
-                                        <form>
-                                            <h4>Add New FAQ</h4>
-                                            <label forhtml="faq-question">Question:</label>
-                                            <input type="text" id="faq-question" required />
-
-                                            <label forhtml="faq-answer">Answer:</label>
-                                            <textarea id="faq-answer" required></textarea>
-
-                                            <button type="submit" className="btn btn-warning">Add FAQ</button>
-                                        </form>
                                 </div>
                             </div>
                         </div>

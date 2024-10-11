@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Pages() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/page/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/page/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -23,6 +38,7 @@ function Pages() {
                             
                             <div className="card-content">
                                 <div className="table-responsive">
+                                    <Link to={'/page/add'} className='btn btn-success float-end' >Add New Page</Link>
                                      <table className="table table-bordered mb-0 text-center">
                                         <thead>
                                             <tr>
@@ -32,52 +48,18 @@ function Pages() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             {/* Sample Page Row */}
-                                            <tr>
-                                                <td>About Us</td>
-                                                <td>/about-us</td>
-                                                <td>
-                                                    <button class="btn btn-success">Edit</button>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More page rows will go here */}
-                                        </tbody>
-                                        <tbody>
-                                             {/* Sample Page Row */}
-                                            <tr>
-                                                <td>About Us</td>
-                                                <td>/about-us</td>
-                                                <td>
-                                                    <button class="btn btn-success">Edit</button>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More page rows will go here */}
-                                        </tbody>
-                                        <tbody>
-                                             {/* Sample Page Row */}
-                                            <tr>
-                                                <td>About Us</td>
-                                                <td>/about-us</td>
-                                                <td>
-                                                    <button class="btn btn-success">Edit</button>
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </td>
-                                            </tr>
-                                            {/* More page rows will go here */}
+                                            {data && data.map((d, key) =>
+                                                <tr key={d.id}>
+                                                    <td>{d.title}</td>
+                                                    <td>{d.slug}</td>
+                                                    <td>
+                                                        <Link to={`/page/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                                        <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
+                                                    </td>
+                                                </tr>
+                                            )}
                                         </tbody>
                                     </table>
-                                    <form>
-                                        <h4>Add New Page</h4>
-                                        <label forhtml="page-title">Page Title:</label>
-                                        <input type="text" id="page-title" required />
-
-                                        <label forhtml="page-slug">Slug:</label>
-                                        <input type="text" id="page-slug" required />
-
-                                        <button type="submit" class="btn btn-warning">Create Page</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
