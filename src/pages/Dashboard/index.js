@@ -57,7 +57,7 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="row">
+            {/* <div className="row">
               <div className="col-md-7 grid-margin stretch-card">
                 <div className="card">
                   <div className="card-body">
@@ -78,7 +78,7 @@ function Dashboard() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="row">
               <div className="col-12 grid-margin">
                 <div className="card">
