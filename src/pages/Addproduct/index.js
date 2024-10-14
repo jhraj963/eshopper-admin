@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../components/axios';
 import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ function Addproduct() {
     }, []);
 
     function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/addproduct`).then(function (response) {
+        axios.get(`${process.env.REACT_APP_API_URL}/addproduct/`).then(function (response) {
             setData(response.data.data);
         });
     }
@@ -19,6 +19,25 @@ function Addproduct() {
             getDatas();
         });
     }
+    
+    
+    
+    // const [data, setData] = useState([]);
+
+    // useEffect(() => {
+    //     getDatas();
+    // }, []);
+
+    // const getDatas = async () => {
+    //     let res = await axios.get(`/addproduct`)
+    //     setData(res.data.data);
+    // };
+
+    // const deleteData = async (id) => {
+    //     await axios.delete(`/addproduct/${id}`);
+    //     getDatas();
+    // };
+
     return (
         <AdminLayout>
             <div className="main-content container-fluid">
@@ -42,7 +61,6 @@ function Addproduct() {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-header">
-                                {/* <h4 className="card-title">All Designation</h4> */}
                                 <Link to={'/Addproduct/add'} className='btn btn-primary float-right' >Add New</Link>
                             </div>
                             <div className="card-content">
@@ -55,7 +73,7 @@ function Addproduct() {
                                                 <th>Price</th>
                                                 <th>Quantity</th>
                                                 <th>Category</th>
-                                                {/* <th>Photo</th> */}
+                                                <th>Photo</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -67,7 +85,22 @@ function Addproduct() {
                                                     <td>{d.price}</td>
                                                     <td>{d.quantity}</td>
                                                     <td>{d.category}</td>
-                                                    {/* <td>{d.photo}</td> */}
+                                                    <td>
+                                                        {
+                                                            d.photo.split(',').map((src, i) => (
+                                                                <img src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`} alt="No Image" width="100%" height="50%" />
+                                                            ))
+                                                        }
+
+
+                                                    </td>
+                                                    {/* <td>
+                                                        {
+                                                            d.photo ? d.photo.split(',').map((src, i) => (
+                                                                <img key={i} src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`} alt="product" width="100" height="100" />
+                                                            )) : 'No Image'
+                                                        }
+                                                    </td> */}
                                                     <td>
                                                         <Link to={`/Addproduct/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
@@ -82,9 +115,8 @@ function Addproduct() {
                     </div>
                 </div>
             </div>
-
         </AdminLayout>
-    )
+    );
 }
 
-export default Addproduct
+export default Addproduct;

@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function ProductAdd() {
-    const [inputs, setInputs] = useState({ id: '', productname: '', description: '', price: '', quantity: '', category: '', photo: '' });
+    const [inputs, setInputs] = useState({ id: '', productname: '', description: '', price: '', quantity: '', category: '', photo: ''});
+    const [selectedFiles, setSelectedFiles] = useState([]); // For image
     const navigate = useNavigate();
     const { id } = useParams();
 
-    function getDatas() {
-        axios.get(`${process.env.REACT_APP_API_URL}/addproduct/${id}`).then(function (response) {
-            setInputs(response.data.data);
-        });
+    const getDatas = async () => {
+        let response = await axios.get(`/addproduct/${id}`);
+        setInputs(response.data.data);
     }
 
     useEffect(() => {
         if (id) {
             getDatas();
         }
-    }, []);
+    }, [id]);
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -27,27 +27,46 @@ function ProductAdd() {
         setInputs(values => ({ ...values, [name]: value }));
     }
 
+    // Handle file input for images
+    const handleFileChange = (e) => {
+        setSelectedFiles(e.target.files);
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(inputs)
+
+        const formData = new FormData();
+
+        // Append images to formData
+        for (let i = 0; i < selectedFiles.length; i++) {
+            formData.append('files[]', selectedFiles[i]);
+        }
+
+        // Append other form inputs to formData
+        for (const property in inputs) {
+            formData.append(property, inputs[property]);
+        }
 
         try {
-            let apiurl = '';
-            if (inputs.id != '') {
-                apiurl = `/addproduct/edit/${inputs.id}`;
+            let apiUrl = '';
+            if (inputs.id !== '') {
+                apiUrl = `/addproduct/edit/${inputs.id}`;
             } else {
-                apiurl = `/addproduct/create`;
+                apiUrl = `/addproduct/create`;
             }
 
+            // Make sure to send formData, not the raw inputs
             let response = await axios({
                 method: 'post',
-                responsiveTYpe: 'json',
-                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
-                data: inputs
+                url: `${process.env.REACT_APP_API_URL}${apiUrl}`,
+                data: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                }
             });
-            navigate('/addproduct')
-        }
-        catch (e) {
+            console.log(response);
+            navigate('/addproduct');
+        } catch (e) {
             console.log(e);
         }
     }
@@ -81,41 +100,41 @@ function ProductAdd() {
                                                 <div className="row">
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="first-name-vertical">Product Name</label>
+                                                            <label htmlFor="first-name-vertical">Product Name</label>
                                                             <input type="text" id="first-name-vertical" className="form-control" defaultValue={inputs.productname} name="productname" onChange={handleChange} placeholder="Product Name" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="email-id-vertical">Description</label>
+                                                            <label htmlFor="email-id-vertical">Description</label>
                                                             <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.description} name="description" onChange={handleChange} placeholder="Description" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="email-id-vertical">Price</label>
+                                                            <label htmlFor="email-id-vertical">Price</label>
                                                             <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.price} name="price" onChange={handleChange} placeholder="Price" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="email-id-vertical">Quantity</label>
+                                                            <label htmlFor="email-id-vertical">Quantity</label>
                                                             <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.quantity} name="quantity" onChange={handleChange} placeholder="Quantity" />
                                                         </div>
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="email-id-vertical">Category</label>
+                                                            <label htmlFor="email-id-vertical">Category</label>
                                                             <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.category} name="category" onChange={handleChange} placeholder="Category" />
                                                         </div>
                                                     </div>
 
-                                                    {/* <div className="col-12">
+                                                    <div className="col-12">
                                                         <div className="form-group">
-                                                            <label for="email-id-vertical">Photo</label>
-                                                            <input type="file" id="email-id-vertical" className="form-control" defaultValue={inputs.photo} name="photo" onChange={handleChange} placeholder="Photo" />
+                                                            <label htmlFor="email-id-vertical">Photo</label>
+                                                            <input type="file" id="email-id-vertical" className="form-control" multiple defaultValue={inputs.photo} name="photo" onChange={handleChange} placeholder="Photo" />
                                                         </div>
-                                                    </div> */}
+                                                    </div>
 
                                                     <div className="col-12 d-flex justify-content-end">
                                                         <button type="submit" className="btn btn-primary mr-1 mb-1">Submit</button>
