@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function EventAdd() {
-    const [inputs, setInputs] = useState({ id: '', eventname: '', startdate: '', enddate: '', discount: '' });
+    const [inputs, setInputs] = useState({ id: '', eventname: '', startdate: '', enddate: '',});
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -85,8 +85,8 @@ function EventAdd() {
                                             <label forhtml="event-end">End Date:</label>
                                             <input defaultValue={inputs.enddate} name="enddate" onChange={handleChange} type="date" id="enddate" required />
 
-                                            <label forhtml="event-discount">Discount:</label>
-                                            <input defaultValue={inputs.discount} name="discount" onChange={handleChange} type="number" id="discount" required />
+                                            {/* <label forhtml="event-discount">Discount:</label>
+                                            <input defaultValue={inputs.discount} name="discount" onChange={handleChange} type="number" id="discount" required /> */}
 
                                             <button type="submit" class="btn btn-primary">Create Sales Event</button>
                                         </form>

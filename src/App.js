@@ -148,7 +148,7 @@ function App() {
           </Protected>
         } />
 
-        <Route path={"/Categories/edit/:id"} element={
+        <Route path={"/category/edit/:id"} element={
           <Protected isSignedIn={isSignedIn} >
             <CategoriesAdd />
           </Protected>

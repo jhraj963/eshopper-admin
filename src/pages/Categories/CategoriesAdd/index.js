@@ -5,17 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import {useParams} from "react-router-dom";
 
 function CategoriesAdd() {
-    const [inputs, setInputs] = useState({id:'',cat_name:'',cat_des:'',status:''});
-    const navigate=useNavigate();
-    const {id} = useParams();
-    function getDatas(){
-        axios.post(`http://localhost/eshopper/categories_single.php`,{id:id}).then(function(response) {
-            setInputs(response.data);
-            console.log(response.data,'response frm api')
+     const [inputs, setInputs] = useState({ id: '', name: '', description: '', status: ''});
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/category/${id}`).then(function (response) {
+            setInputs(response.data.data);
         });
     }
+
     useEffect(() => {
-        if(id){
+        if (id) {
             getDatas();
         }
     }, []);
@@ -23,23 +24,30 @@ function CategoriesAdd() {
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({...values, [name]: value}));
+        setInputs(values => ({ ...values, [name]: value }));
     }
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(inputs)
-        
-        try{
-            let response= await axios({
+
+        try {
+            let apiurl = '';
+            if (inputs.id != '') {
+                apiurl = `/category/edit/${inputs.id}`;
+            } else {
+                apiurl = `/category/create`;
+            }
+
+            let response = await axios({
                 method: 'post',
                 responsiveTYpe: 'json',
-                url: `http://localhost/eshopper/categories_add.php`,
+                url: `${process.env.REACT_APP_API_URL}${apiurl}`,
                 data: inputs
             });
-            navigate('/categories')
-        } 
-        catch(e){
+            navigate('/Categories')
+        }
+        catch (e) {
             console.log(e);
         }
     }
@@ -74,13 +82,24 @@ function CategoriesAdd() {
                                                 <div className="col-12">
                                                     <div className="form-group">
                                                     <label for="first-name-vertical">Categories Name</label>
-                                                    <input type="text" id="first-name-vertical" className="form-control" defaultValue={inputs.cat_name} name="cat_name" onChange={handleChange} placeholder="Designation"/>
+                                                    <input type="text" id="first-name-vertical" className="form-control" defaultValue={inputs.name} name="name" onChange={handleChange} placeholder="Designation"/>
                                                     </div>
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="form-group">
                                                     <label for="email-id-vertical">Categories Description</label>
-                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.cat_des} name="cat_des" onChange={handleChange} placeholder="Description"/>
+                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.description} name="description" onChange={handleChange} placeholder="Description"/>
+                                                    </div>
+                                                </div>
+                                                <div className="col-12">
+                                                    <div className="form-group">
+                                                    <label for="email-id-vertical">Status</label>
+                                                    <select id="email-id-vertical" className="form-control" name="status" onChange={handleChange} value={inputs.type}>
+                                                        <option></option>
+                                                        <option>Active</option>
+                                                        <option>Inactive</option>
+                                                    </select>
+                                                    {/* <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.status} name="status" onChange={handleChange} placeholder="status"/> */}
                                                     </div>
                                                 </div>
                                                 

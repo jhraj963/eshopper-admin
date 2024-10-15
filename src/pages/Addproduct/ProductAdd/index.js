@@ -132,7 +132,8 @@ function ProductAdd() {
                                                     <div className="col-12">
                                                         <div className="form-group">
                                                             <label htmlFor="email-id-vertical">Photo</label>
-                                                            <input type="file" id="email-id-vertical" className="form-control" multiple defaultValue={inputs.photo} name="photo" onChange={handleChange} placeholder="Photo" />
+                                                             <input type="file" id="photo" className="form-control" defaultValue={inputs.photo} name="photo" multiple onChange={handleFileChange} />
+                                                            {/* <input type="file" id="email-id-vertical" className="form-control" multiple defaultValue={inputs.photo} name="photo" onChange={handleChange} placeholder="Photo" /> */}
                                                         </div>
                                                     </div>
 

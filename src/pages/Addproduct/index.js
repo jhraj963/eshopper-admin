@@ -46,14 +46,6 @@ function Addproduct() {
                         <div className="col-12 col-md-6 order-md-1 order-last">
                             <h3>All Products</h3>
                         </div>
-                        <div className="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" className='breadcrumb-header'>
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                    <li className="breadcrumb-item active" aria-current="page">List</li>
-                                </ol>
-                            </nav>
-                        </div>
                     </div>
                 </div>
 
@@ -61,7 +53,7 @@ function Addproduct() {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-header">
-                                <Link to={'/Addproduct/add'} className='btn btn-primary float-right' >Add New</Link>
+                                <Link to={'/Addproduct/add'} className='btn btn-primary float-end' >Add New</Link>
                             </div>
                             <div className="card-content">
                                 <div className="table-responsive">

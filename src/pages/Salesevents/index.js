@@ -46,7 +46,7 @@ function Salesevents() {
                                                 <th>Event Name</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
-                                                <th>Discount</th>
+                                                {/* <th>Discount</th> */}
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -57,7 +57,7 @@ function Salesevents() {
                                                     <td>{d.eventname}</td>
                                                     <td>{d.startdate}</td>
                                                     <td>{d.enddate}</td>
-                                                    <td>{d.discount}</td>
+                                                    {/* <td>{d.discount}</td> */}
                                                     <td>
                                                         <Link to={`/salesevents/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
@@ -67,7 +67,7 @@ function Salesevents() {
                                         </tbody>
 
                                     </table>
-                                    <form>
+                                    {/* <form>
                                         <h4>Add New Sales Event</h4>
                                         <label forhtml="event-name">Event Name:</label>
                                         <input type="text" id="event-name" required />
@@ -78,11 +78,11 @@ function Salesevents() {
                                         <label forhtml="event-end">End Date:</label>
                                         <input type="date" id="event-end" required />
 
-                                        <label forhtml="event-discount">Discount:</label>
+                                       <label forhtml="event-discount">Discount:</label>
                                         <input type="number" id="event-discount" required />
 
                                         <button type="submit" class="btn btn-primary">Create Sales Event</button>
-                                    </form>
+                                    </form> */}
                                 </div>
                             </div>
                         </div>

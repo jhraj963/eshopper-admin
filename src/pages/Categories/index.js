@@ -4,18 +4,18 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Categories() {
-    const[data, setData]=useState([]);
+    const [data, setData] = useState([]);
     useEffect(() => {
         getDatas();
     }, []);
 
     function getDatas() {
-        axios.get(`http://localhost/eshopper/categories.php`).then(function(response) {
-            setData(response.data);
+        axios.get(`${process.env.REACT_APP_API_URL}/category/`).then(function (response) {
+            setData(response.data.data);
         });
     }
     const deleteData = (id) => {
-        axios.post(`http://localhost/eshopper/categories_delete.php`,{id:id}).then(function(response){
+        axios.delete(`${process.env.REACT_APP_API_URL}/category/${id}`).then(function (response) {
             getDatas();
         });
     }
@@ -51,11 +51,12 @@ function Categories() {
                             <tbody>
                             {data && data.map((d, key) =>
                                 <tr key={d.id}>
-                                    <td className="text-bold-500">{d.cat_name}</td>
-                                    <td>{d.cat_des}</td>
-                                    <td>{d.status? `active`:`Inactive`}</td>
+                                    <td>{d.name}</td>
+                                    <td>{d.description}</td>
+                                    <td>{d.status}</td>
+                                    {/* <td>{d.status? `active`:`Inactive`}</td> */}
                                     <td>
-                                        <Link to={`/categories/edit/${d.id}`} className='btn btn-info' >Edit</Link>
+                                        <Link to={`/category/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>
                                     </td>
                                 </tr>

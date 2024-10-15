@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function DiscountAdd() {
-    const [inputs, setInputs] = useState({ id: '', coupon: '', discount: '' });
+    const [inputs, setInputs] = useState({ id: '', eventname_id: '', coupon: '', discount: '' });
+    
+    
+     const [salesEvent, setEvent] = useState([]);
+    
     const navigate = useNavigate();
     const { id } = useParams();
 
@@ -15,10 +19,17 @@ function DiscountAdd() {
         });
     }
 
+
+    const getRelational = async (e) => {
+        let zoneres = await axios.get(`/salesEvent`)
+        setEvent(zoneres.data.data);
+    }
+
     useEffect(() => {
         if (id) {
             getDatas();
         }
+         getRelational()
     }, []);
 
     const handleChange = (event) => {
@@ -81,6 +92,26 @@ function DiscountAdd() {
                                                 <div className="row">
                                                     <div className="col-12">
                                                         <div className="form-group">
+                                                            <label htmlFor="eventname_id">Event Name</label>
+                                                            {console.log(salesEvent)} {/* Log salesEvent to check */}
+                                                            {salesEvent.length > 0 && (
+                                                                <select
+                                                                    className="form-control"
+                                                                    id="eventname_id"
+                                                                    name="eventname_id"
+                                                                    value={inputs.eventname_id}
+                                                                    onChange={handleChange}
+                                                                >
+                                                                    <option value="">Select Event</option>
+                                                                    {salesEvent.map((d) => (
+                                                                        <option key={d.id} value={d.id}>{d.name}</option>
+                                                                    ))}
+                                                                </select>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <div className="form-group">
                                                             <label for="first-name-vertical">Coupon</label>
                                                             <input type="text" id="first-name-vertical" className="form-control" defaultValue={inputs.coupon} name="coupon" onChange={handleChange} placeholder="Coupon" />
                                                         </div>
@@ -91,34 +122,6 @@ function DiscountAdd() {
                                                             <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.discount} name="discount" onChange={handleChange} placeholder="discount" />
                                                         </div>
                                                     </div>
-
-                                                    {/* <div className="col-12">
-                                                    <div className="form-group">
-                                                    <label for="email-id-vertical">Department</label>
-                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.department_id} name="department_id" onChange={handleChange} placeholder="Department"/>
-                                                    </div>
-                                                </div>
-
-                                                <div className="col-12">
-                                                    <div className="form-group">
-                                                    <label for="email-id-vertical">Specialist</label>
-                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.specialist} name="specialist" onChange={handleChange} placeholder="Specialist"/>
-                                                    </div>
-                                                </div>
-
-                                                <div className="col-12">
-                                                    <div className="form-group">
-                                                    <label for="email-id-vertical">Education</label>
-                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.education} name="education" onChange={handleChange} placeholder="Education"/>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div className="col-12">
-                                                    <div className="form-group">
-                                                    <label for="email-id-vertical">Fees</label>
-                                                    <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.fees} name="fees" onChange={handleChange} placeholder="000.00"/>
-                                                    </div>
-                                                </div> */}
 
                                                     <div className="col-12 d-flex justify-content-end">
                                                         <button type="submit" className="btn btn-primary mr-1 mb-1">Submit</button>
