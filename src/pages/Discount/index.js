@@ -51,7 +51,7 @@ function Discount() {
                                         <tbody>
                                             {data && data.map((d, key) =>
                                                 <tr key={d.id}>
-                                                    <td>{d.salesEvent?.name}</td>
+                                                    <td>{d.salesevent?.eventname}</td>
                                                     <td>{d.coupon}</td>
                                                     <td>{d.discount}</td>
                                                     <td>

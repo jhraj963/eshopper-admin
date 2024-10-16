@@ -8,7 +8,7 @@ function DiscountAdd() {
     const [inputs, setInputs] = useState({ id: '', eventname_id: '', coupon: '', discount: '' });
     
     
-     const [salesEvent, setEvent] = useState([]);
+    const [salesevent, setEvent] = useState([]);
     
     const navigate = useNavigate();
     const { id } = useParams();
@@ -21,7 +21,7 @@ function DiscountAdd() {
 
 
     const getRelational = async (e) => {
-        let zoneres = await axios.get(`/salesEvent`)
+        let zoneres = await axios.get(`/salesevent`)
         setEvent(zoneres.data.data);
     }
 
@@ -93,8 +93,8 @@ function DiscountAdd() {
                                                     <div className="col-12">
                                                         <div className="form-group">
                                                             <label htmlFor="eventname_id">Event Name</label>
-                                                            {console.log(salesEvent)} {/* Log salesEvent to check */}
-                                                            {salesEvent.length > 0 && (
+                                                            {console.log(salesevent)} {/* Log salesEvent to check */}
+                                                            {salesevent.length > 0 && (
                                                                 <select
                                                                     className="form-control"
                                                                     id="eventname_id"
@@ -103,8 +103,8 @@ function DiscountAdd() {
                                                                     onChange={handleChange}
                                                                 >
                                                                     <option value="">Select Event</option>
-                                                                    {salesEvent.map((d) => (
-                                                                        <option key={d.id} value={d.id}>{d.name}</option>
+                                                                    {salesevent.map((d) => (
+                                                                        <option key={d.id} value={d.id}>{d.eventname}</option>
                                                                     ))}
                                                                 </select>
                                                             )}
