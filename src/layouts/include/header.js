@@ -28,8 +28,8 @@ function Header() {
     return (
         <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div className="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-                <a className="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-                <a className="navbar-brand brand-logo-mini" href=""><img src="/assets/images/logo-mini.svg" alt="logo" /></a>
+                <a className="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.png" alt="logo" width="200%" /></a>
+                {/* <a className="navbar-brand brand-logo-mini" href=""><img src="/assets/images/logo-mini.svg" alt="logo" /></a> */}
             </div>
             <div className="navbar-menu-wrapper d-flex align-items-stretch">
                 <button className="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -53,7 +53,7 @@ function Header() {
                                 <span className="availability-status online"></span>
                             </div>
                             <div className="nav-profile-text">
-                                <p className="mb-1 text-black">David Greymaax</p>
+                                <p className="mb-1 text-black">Julfiqur Haidar Raja</p>
                             </div>
                         </a>
                         <div className="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">

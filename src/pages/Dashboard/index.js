@@ -29,7 +29,7 @@ function Dashboard() {
                     <img src="assets/images/dashboard/circle.svg" className="card-img-absolute" alt="circle-image" />
                     <h4 className="font-weight-normal mb-3">Weekly Sales <i className="mdi mdi-chart-line mdi-24px float-right"></i>
                     </h4>
-                    <h2 className="mb-5">$ 15,0000</h2>
+                    <h2 className="mb-5">৳ 15,0000</h2>
                     <h6 className="card-text">Increased by 60%</h6>
                   </div>
                 </div>
@@ -98,7 +98,7 @@ function Dashboard() {
                         <tbody>
                           <tr>
                             <td>
-                              <img src="assets/images/faces/face1.jpg" className="me-2" alt="image"/> David Grey
+                              <img src="assets/images/faces/face3.jpg" className="me-2" alt="image" /> Johnson Doe
                             </td>
                             <td> Fund is not recieved </td>
                             <td>

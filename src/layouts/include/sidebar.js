@@ -29,7 +29,7 @@ function Sidebar() {
                   {/* <!--change to offline or busy as needed--> */}
                 </div>
                 <div className="nav-profile-text d-flex flex-column">
-                  <span className="font-weight-bold mb-2">David Grey. H</span>
+                  <span className="font-weight-bold mb-2">Julfiqur Haidar Raja</span>
                   <span className="text-secondary text-small">Project Manager</span>
                 </div>
                 <i className="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
