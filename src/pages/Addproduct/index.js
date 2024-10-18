@@ -19,24 +19,7 @@ function Addproduct() {
             getDatas();
         });
     }
-    
-    
-    
-    // const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     getDatas();
-    // }, []);
-
-    // const getDatas = async () => {
-    //     let res = await axios.get(`/addproduct`)
-    //     setData(res.data.data);
-    // };
-
-    // const deleteData = async (id) => {
-    //     await axios.delete(`/addproduct/${id}`);
-    //     getDatas();
-    // };
 
     return (
         <AdminLayout>
@@ -86,13 +69,6 @@ function Addproduct() {
 
 
                                                     </td>
-                                                    {/* <td>
-                                                        {
-                                                            d.photo ? d.photo.split(',').map((src, i) => (
-                                                                <img key={i} src={`${process.env.REACT_APP_BACKEND_URL}/addproduct/${src}`} alt="product" width="100" height="100" />
-                                                            )) : 'No Image'
-                                                        }
-                                                    </td> */}
                                                     <td>
                                                         <Link to={`/Addproduct/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>

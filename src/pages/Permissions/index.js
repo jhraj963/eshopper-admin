@@ -12,7 +12,7 @@ function Permissions() {
         <div className="main-content container-fluid">
                 <div className="page-title">
                     <div className="row">
-                          <h3>Manage Permissions</h3>
+                          <h3>User Permissions</h3>
                           
                     </div>
                 </div>
@@ -27,6 +27,7 @@ function Permissions() {
                                           <thead>
                                               <tr>
                                                   <th>Username</th>
+                                                  <th>Email</th>
                                                   <th>Role</th>
                                                   <th>Actions</th>
                                               </tr>
@@ -34,6 +35,7 @@ function Permissions() {
                                           <tbody>
                                               <tr>
                                                   <td>john_doe</td>
+                                                  <td>abc@gmail.com</td>
                                                   <td>Admin</td>
                                                   <td>
                                                       <button className="btn btn-warning">Edit</button>
@@ -42,6 +44,7 @@ function Permissions() {
                                               </tr>
                                               <tr>
                                                   <td>jane_smith</td>
+                                                  <td>abc@gmail.com</td>
                                                   <td>Editor</td>
                                                   <td>
                                                       <button className="btn btn-warning">Edit</button>
