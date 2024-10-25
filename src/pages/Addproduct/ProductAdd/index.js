@@ -5,20 +5,27 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function ProductAdd() {
-    const [inputs, setInputs] = useState({ id: '', productname: '', description: '', price: '', quantity: '', category: '', photo: ''});
+    const [inputs, setInputs] = useState({ id: '', productname: '', description: '', price: '', quantity: '', category_id: '', photo: ''});
     const [selectedFiles, setSelectedFiles] = useState([]); // For image
     const navigate = useNavigate();
     const { id } = useParams();
+    const [category, setCategory] = useState([]);
 
     const getDatas = async () => {
         let response = await axios.get(`/addproduct/${id}`);
         setInputs(response.data.data);
     }
 
+    const getRelational = async (e) => {
+        let zoneres = await axios.get(`/category`)
+        setCategory(zoneres.data.data);
+    }
+
     useEffect(() => {
         if (id) {
             getDatas();
         }
+         getRelational()
     }, [id]);
 
     const handleChange = (event) => {
@@ -124,8 +131,20 @@ function ProductAdd() {
                                                     </div>
                                                     <div className="col-12">
                                                         <div className="form-group">
-                                                            <label htmlFor="email-id-vertical">Category</label>
-                                                            <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.category} name="category" onChange={handleChange} placeholder="Category" />
+                                                            <label htmlFor="category_id">Category</label>
+                                                            <select
+                                                                    className="form-control"
+                                                                    id="category_id"
+                                                                    name="category_id"
+                                                                    value={inputs.category_id}
+                                                                    onChange={handleChange}
+                                                                >
+                                                                    <option value="">Select Category</option>
+                                                                    {category.map((d) => (
+                                                                        <option key={d.id} value={d.id}>{d.name}</option>
+                                                                    ))}
+                                                                </select>
+                                                            {/* <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.category} name="category" onChange={handleChange} placeholder="Category" /> */}
                                                         </div>
                                                     </div>
 

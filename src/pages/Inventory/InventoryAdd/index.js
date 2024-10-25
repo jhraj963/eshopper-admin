@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../../components/axios';
 import AdminLayout from '../../../layouts/AdminLayout';
 import { useNavigate, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function InventoryAdd() {
-    const [inputs, setInputs] = useState({ id: '', product_name: '', current_stock: '', reorder_level: '' });
+    const [inputs, setInputs] = useState({ id: '', product_id: '', current_stock: '', reorder_level: '' });
     const navigate = useNavigate();
     const { id } = useParams();
+    const [abc, setProduct] = useState([]);
 
     function getDatas() {
         axios.get(`${process.env.REACT_APP_API_URL}/inventory/${id}`).then(function (response) {
@@ -15,10 +16,16 @@ function InventoryAdd() {
         });
     }
 
+    const getRelational = async (e) => {
+        let zoneres = await axios.get(`/addproduct`)
+        setProduct(zoneres.data.data);
+    }
+
     useEffect(() => {
         if (id) {
             getDatas();
         }
+        getRelational()
     }, []);
 
     const handleChange = (event) => {
@@ -59,7 +66,7 @@ function InventoryAdd() {
                 <div className="main-content container-fluid">
                     <div className="page-title">
                         <div className="row">
-                            <h3>Add New Blog</h3>
+                            <h3>Add New Inventory</h3>
 
                         </div>
                     </div>
@@ -77,7 +84,19 @@ function InventoryAdd() {
 
                                                 <div className="form-group">
                                                     <label forhtml="title">Product Name:</label>
-                                                    <input defaultValue={inputs.product_name} name="product_name" onChange={handleChange} type="text" id="product_name" className="form-control" required />
+                                                    {/* <input defaultValue={inputs.product_name} name="product_name" onChange={handleChange} type="text" id="product_name" className="form-control" required /> */}
+                                                    <select
+                                                        className="form-control"
+                                                        id="product_id"
+                                                        name="product_id"
+                                                        value={inputs.product_id}
+                                                        onChange={handleChange}
+                                                    >
+                                                        <option value="">Select Product</option>
+                                                        {abc.map((d) => (
+                                                            <option key={d.id} value={d.id}>{d.productname}</option>
+                                                        ))}
+                                                    </select>
                                                 </div>
 
                                                 <div className="form-group">
@@ -90,7 +109,7 @@ function InventoryAdd() {
                                                     <input defaultValue={inputs.reorder_level} name="reorder_level" onChange={handleChange} type="text" id="reorder_level" className="form-control" required />
                                                 </div>
 
-                                                <button type="submit" class="btn btn-primary">Create Blog Post</button>
+                                                <button type="submit" class="btn btn-primary">Create Inventory</button>
                                             </form>
                                         </div>
 

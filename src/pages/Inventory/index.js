@@ -51,7 +51,7 @@ function Inventory() {
                                         <tbody>
                                             {data && data.map((d, key) =>
                                                 <tr key={d.id}>
-                                                    <td>{d.product_name}</td>
+                                                    <td>{d.abc?.productname}</td>
                                                     <td>{d.current_stock}</td>
                                                     <td>{d.reorder_level}</td>
                                                     <td>

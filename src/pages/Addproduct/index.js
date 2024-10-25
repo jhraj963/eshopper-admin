@@ -59,7 +59,7 @@ function Addproduct() {
                                                     <td>{d.description}</td>
                                                     <td>{d.price}</td>
                                                     <td>{d.quantity}</td>
-                                                    <td>{d.category}</td>
+                                                    <td>{d.category?.name}</td>
                                                     <td>
                                                         {
                                                             d.photo.split(',').map((src, i) => (
