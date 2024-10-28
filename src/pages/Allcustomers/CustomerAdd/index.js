@@ -15,6 +15,8 @@ function CustomerAdd() {
         });
     }
 
+
+
     useEffect(() => {
         if (id) {
             getDatas();

@@ -5,9 +5,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 function OrderAdd() {
-    const [inputs, setInputs] = useState({ id: '', order_id: '', customer_name: '', order_date: '', total_amount: '', status: ''});
+    const [inputs, setInputs] = useState({ id: '', customer_id: '', customer_name: '', order_date: '', total_amount: '', status: ''});
     const navigate = useNavigate();
     const { id } = useParams();
+    const [customer, setCustomer] = useState([]);
 
     function getDatas() {
         axios.get(`${process.env.REACT_APP_API_URL}/allorder/${id}`).then(function (response) {
@@ -15,10 +16,16 @@ function OrderAdd() {
         });
     }
 
+    const getRelational = async (e) => {
+        let zoneres = await axios.get(`/allcustomer`)
+        setCustomer(zoneres.data.data);
+    }
+
     useEffect(() => {
         if (id) {
             getDatas();
         }
+        getRelational()
     }, []);
 
     const handleChange = (event) => {
@@ -64,7 +71,7 @@ function OrderAdd() {
                         </div>
                     </div>
                     <div className="card-header">
-                        <Link to={'/allorder'} className='btn btn-primary float-left' >Back to List</Link>
+                        <Link to={'/Allorders'} className='btn btn-primary float-left' >Back to List</Link>
                     </div>
                     <div className="row" id="table-bordered">
                         <div className="col-12">
@@ -78,6 +85,24 @@ function OrderAdd() {
                                             <div className="form-group">
                                                 <label forhtml="title">Order ID (Unique):</label>
                                                 <input defaultValue={inputs.order_id} name="order_id" onChange={handleChange} type="text" id="order_id" className="form-control" required />
+                                            </div>
+
+                                            <div className="form-group">
+                                                <label forhtml="title">Customer ID:</label>
+                                                {/* <input defaultValue={inputs.customer_name} name="customer_name" onChange={handleChange} type="text" id="customer_name" 
+                                                className="form-control" required /> */}
+                                                <select
+                                                    className="form-control"
+                                                    id="customer_id"
+                                                    name="customer_id"
+                                                    value={inputs.customer_id}
+                                                    onChange={handleChange}
+                                                >
+                                                    <option value="">Select Customer</option>
+                                                    {customer.map((d) => (
+                                                        <option key={d.id} value={d.id}>{d.full_name}</option>
+                                                    ))}
+                                                </select>
                                             </div>
 
                                             <div className="form-group">
