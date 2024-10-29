@@ -4,6 +4,21 @@ import AdminLayout from '../../layouts/AdminLayout';
 import { Link } from 'react-router-dom';
 
 function Notifications() {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        getDatas();
+    }, []);
+
+    function getDatas() {
+        axios.get(`${process.env.REACT_APP_API_URL}/contact/`).then(function (response) {
+            setData(response.data.data);
+        });
+    }
+    const deleteData = (id) => {
+        axios.delete(`${process.env.REACT_APP_API_URL}/contact/${id}`).then(function (response) {
+            getDatas();
+        });
+    }
   return (
     <AdminLayout>
       <>
@@ -26,40 +41,21 @@ function Notifications() {
                                       <table className="table table-bordered mb-0 text-center">
                                           <thead>
                                               <tr>
-                                                  <th>Date</th>
+                                                  <th>Name</th>
+                                                  <th>E-mail</th>
+                                                  <th>Subject</th>
                                                   <th>Message</th>
-                                                  <th>Status</th>
-                                                  <th>Actions</th>
                                               </tr>
                                           </thead>
                                           <tbody>
-                                              <tr>
-                                                  <td>2024-10-05</td>
-                                                  <td>Your order has been shipped!</td>
-                                                  <td><span className="badge badge-success">Read</span></td>
-                                                  <td>
-                                                      <button className="btn btn-warning">Mark as Unread</button>
-                                                      <button className="btn btn-danger">Delete</button>
-                                                  </td>
+                                              {data && data.map((d, key) =>  
+                                                <tr key={d.id}>
+                                                    <td>{d.name}</td>
+                                                    <td>{d.email}</td>
+                                                    <td>{d.subject}</td>
+                                                    <td>{d.message}</td>
                                               </tr>
-                                              <tr>
-                                                  <td>2024-10-04</td>
-                                                  <td>Your payment was successful.</td>
-                                                  <td><span className="badge badge-success">Read</span></td>
-                                                  <td>
-                                                      <button className="btn btn-warning">Mark as Unread</button>
-                                                      <button className="btn btn-danger">Delete</button>
-                                                  </td>
-                                              </tr>
-                                              <tr>
-                                                  <td>2024-10-03</td>
-                                                  <td>New feature added to your dashboard!</td>
-                                                  <td><span className="badge badge-warning">Unread</span></td>
-                                                  <td>
-                                                      <button className="btn btn-success">Mark as Read</button>
-                                                      <button className="btn btn-danger">Delete</button>
-                                                  </td>
-                                              </tr>
+                                                  )}
                                               {/* More notification rows can go here */}
                                           </tbody>
                                       </table>
