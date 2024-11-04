@@ -56,6 +56,7 @@ import Createbackup from './pages/Createbackup';
 import Restorebackup from './pages/Restorebackup';
 import Userguides from './pages/Userguides';
 import Helpcenter from './pages/Helpcenter';
+import Invoice from './pages/Invoice';
 import Protected from './components/protected';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -464,6 +465,9 @@ function App() {
             <Helpcenter />
           </Protected>
         } />
+
+        <Route path="/Invoice" element={<Invoice />} />
+        <Route path="/Invoice/:orderId" element={<Invoice />} />
         {/* <Route path="/" element={<Dashboard />} /> */}
 
 
