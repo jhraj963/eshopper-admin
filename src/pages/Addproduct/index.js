@@ -49,6 +49,7 @@ function Addproduct() {
                                                 <th>Quantity</th>
                                                 <th>Category</th>
                                                 <th>Photo</th>
+                                                <th>Featured Product</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -69,6 +70,7 @@ function Addproduct() {
 
 
                                                     </td>
+                                                    <td>{d.is_featured}</td>
                                                     <td>
                                                         <Link to={`/Addproduct/edit/${d.id}`} className='btn btn-info' >Edit</Link>
                                                         <button type='button' onClick={() => deleteData(d.id)} className='btn btn-danger'>Delete</button>

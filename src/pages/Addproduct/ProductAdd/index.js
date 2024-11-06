@@ -156,6 +156,13 @@ function ProductAdd() {
                                                         </div>
                                                     </div>
 
+                                                    {/* <div className="col-12">
+                                                        <div className="form-group">
+                                                            <label htmlFor="email-id-vertical">Featured Product (1 or Null)</label>
+                                                            <input type="text" id="email-id-vertical" className="form-control" defaultValue={inputs.is_featured} name="quantity" onChange={handleChange} placeholder="is_featured" />
+                                                        </div>
+                                                    </div> */}
+
                                                     <div className="col-12 d-flex justify-content-end">
                                                         <button type="submit" className="btn btn-primary mr-1 mb-1">Submit</button>
                                                         <button type="reset" className="btn btn-light-secondary mr-1 mb-1">Reset</button>
