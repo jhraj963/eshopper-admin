@@ -21329,4 +21329,47 @@ dl li {
   flex-grow: 1;
 }
 
+.table-info {
+  table-layout: fixed;
+  /* Ensures columns have fixed widths */
+  width: 100%;
+  /* Full width for the table */
+}
+
+.table-info th,
+.table-info td {
+  text-align: center;
+  /* Center-align content */
+  vertical-align: middle;
+  /* Center vertically within the cell */
+  overflow: hidden;
+  /* Prevent content overflow */
+  text-overflow: ellipsis;
+  /* Add ellipsis to overflowing text */
+  white-space: nowrap;
+  /* Keep text on a single line */
+}
+
+.truncate {
+  overflow: hidden;
+  /* Hide overflowing text */
+  text-overflow: ellipsis;
+  /* Show ellipsis for long text */
+  white-space: nowrap;
+  /* Prevent wrapping of text */
+}
+
+.cell-image {
+  width: 100%;
+  /* Stretch image to fill cell width */
+  height: auto;
+  /* Maintain aspect ratio */
+  max-height: 50px;
+  /* Limit height of the image */
+  object-fit: cover;
+  /* Crop image if necessary */
+  overflow: hidden;
+  /* Prevent image overflow */
+}
+
 /*# sourceMappingURL=style.css.map */
