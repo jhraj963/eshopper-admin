@@ -5,7 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 function BlogAdd() {
-    const [inputs, setInputs] = useState({ id: '', title: '', author: '', date: '', overview: '' });
+    const [inputs, setInputs] = useState({ id: '', title: '', author: '', date: '', overview: '', photo:'' });
     const [photo, setPhoto] = useState(null);
     const [photoPreview, setPhotoPreview] = useState(null);
     const navigate = useNavigate();
