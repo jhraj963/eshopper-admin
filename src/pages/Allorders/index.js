@@ -37,7 +37,8 @@ function Allorders() {
           <div className="card-body">
             <h2>All Orders</h2>
             {/* <Link to={'/allorder/add'} className='btn btn-success float-end'>Add New Order</Link> */}
-            <table className="table table-bordered mb-0 text-center table-info">
+            {/* <table className="table table-bordered mb-0 text-center table-info"> */}
+            <table className="table table-bordered mb-0 text-center">
               <thead>
                 <tr>
                   <th>Order ID</th>
